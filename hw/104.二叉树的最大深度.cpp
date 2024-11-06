@@ -8,6 +8,7 @@
 /**
  * Definition for a binary tree node. 
  * */
+#include <algorithm>
 
 struct TreeNode {
     int val;
@@ -21,7 +22,11 @@ struct TreeNode {
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        
+        if (root == nullptr) {
+            return 0;
+        }
+
+        return std::max(maxDepth(root->left), maxDepth(root->right)) + 1;
     }
 };
 // @lc code=end
